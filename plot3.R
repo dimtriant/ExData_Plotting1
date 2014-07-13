@@ -1,4 +1,4 @@
-### This code reads the data between 1/2/2007 and 2/2/2007 and creates a PNG file containing a Histogram of Global_active_power
+### This code reads the data between 1/2/2007 and 2/2/2007 and creates a PNG file containing a Line Chart of Energy_sub_metering
 ### The text file household_power_consumption.txt needs to be in your working directory
 
 ## Read the text file for dates of 1/2/2007 and 2/2/2007
@@ -22,12 +22,20 @@ dat_mod <- dat_mod[,c('DateTime','Global_active_power','Global_reactive_power','
 ## Change the class of DateTime
 dat_mod$DateTime <- strptime(dat_mod$DateTime, "%d/%m/%Y %H:%M:%S")
 
-## Create Global Active Power Histogram and set title and axis name and save to plot1.png
-png("plot1.png",, width = 480, height = 480)
+## Create Energy Sub Metering Chart and save to plot3.png
+png("plot3.png",, width = 480, height = 480)
 
-hist(dat_mod$Global_active_power, 
-     col="Red",
-     main="Global Active Power",
-     xlab="Global Active Power (kilowatts)")
+plot (x= dat_mod$DateTime, dat_mod$Sub_metering_1,type ="l",
+      xlab ="",
+      ylab = "Energy sub metering")
+
+## add additional lines
+lines (dat_mod$DateTime, dat_mod$Sub_metering_2, col ="red")
+lines (dat_mod$DateTime, dat_mod$Sub_metering_3, col ="blue")
+
+## Add Legend 
+legend("topright",
+       c("Sub_metering_1 ","Sub_metering_2","Sub_metering_3"),
+       lwd=c(2.5,2.5,2.5),col=c("black", "red","blue"))
 
 dev.off()
