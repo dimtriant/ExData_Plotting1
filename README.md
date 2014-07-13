@@ -1,7 +1,7 @@
 ##Exploratory Data Analysis - Assignment 1
 In this repository you can find all 4 plot scripts and also the realated GIF files.
 
-<b>WARNING:</b> Please make sure that the text file household_power_consumption.txt needs to be in your working directory
+<b>WARNING:</b> Please make sure that the text file household_power_consumption.txt is in your working directory
 
 ___
 ## Introduction
